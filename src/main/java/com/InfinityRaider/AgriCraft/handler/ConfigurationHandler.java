@@ -27,6 +27,7 @@ public class ConfigurationHandler {
         public static final String CATEGORY_COMPATIBILITY = "compatibility";
         public static final String CATEGORY_CLIENT = "clientside config";
         public static final String CATEGORY_RENDERING = "rendering";
+        public static final String CATEGORY_PIWCS = "piwcs";
     }
 
     public static Configuration config;
@@ -105,6 +106,10 @@ public class ConfigurationHandler {
     public static boolean disableParticles;
     public static String statDisplay;
     public static boolean disableSounds;
+    
+    //PIWCS
+    //-----
+    public static int maxStatScore;
 
     public static void init(FMLPreInitializationEvent event) {
         checkAndCreateConfig(event);
@@ -208,6 +213,9 @@ public class ConfigurationHandler {
                 "I recommend leaving this on false, if you have FPS problems, set this to true and see for yourself if it is an improvement or not.\n" +
                 "This config setting must match on server and client, the server should know if it should cause block updates and the client has to know how to render the crops"
         );
+        
+        //PIWCS
+        maxStatScore = config.getInt("Maimum stat score", Categories.CATEGORY_PIWCS, 120, 0, 3*10*10, "Maximum allowed stat score for crops. Stat score is the sum of the squares of all crop stats.\nWhenever a crop with stat score higher then the maximum would be created, its stats are nerfed randomly until the restraint is satisfied.");
 
 
         if(config.hasChanged()) {config.save();}

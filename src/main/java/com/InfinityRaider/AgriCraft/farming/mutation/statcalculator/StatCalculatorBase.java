@@ -4,6 +4,7 @@ import com.InfinityRaider.AgriCraft.api.v1.IMutation;
 import com.InfinityRaider.AgriCraft.api.v2.ISeedStats;
 import com.InfinityRaider.AgriCraft.api.v2.ICrop;
 import com.InfinityRaider.AgriCraft.farming.PlantStats;
+import com.InfinityRaider.AgriCraft.farming.StatNerfer;
 import com.InfinityRaider.AgriCraft.farming.mutation.MutationHandler;
 import com.InfinityRaider.AgriCraft.handler.ConfigurationHandler;
 import net.minecraft.item.Item;
@@ -44,7 +45,9 @@ public abstract  class StatCalculatorBase extends StatCalculator {
         int meanGain = getMeanIgnoringNegativeValues(gain);
         int meanStrength = getMeanIgnoringNegativeValues(strength);
         int divisor = mutation ? ConfigurationHandler.cropStatDivisor : 1;
-        return new PlantStats(calculateStats(meanGrowth, nrValidParents, divisor), calculateStats(meanGain, nrValidParents, divisor), calculateStats(meanStrength, nrValidParents, divisor));
+        PlantStats stats = new PlantStats(calculateStats(meanGrowth, nrValidParents, divisor), calculateStats(meanGain, nrValidParents, divisor), calculateStats(meanStrength, nrValidParents, divisor));
+        StatNerfer.nerfStats(stats);
+        return stats;
     }
 
     //gets an array of all the possible parents from the array containing all the neighbouring crops
