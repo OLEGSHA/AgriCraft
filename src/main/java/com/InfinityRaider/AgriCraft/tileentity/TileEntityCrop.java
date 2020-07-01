@@ -299,6 +299,7 @@ public class TileEntityCrop extends TileEntityAgricraft implements ICrop, IDebug
             fertiliser.onFertiliserApplied(this.getWorldObj(), this.xCoord, this.yCoord, this.zCoord, rand);
         }
         if(this.hasPlant() || this.hasWeed()) {
+            StatNerfer.nerfStats(stats);
             ((BlockCrop) Blocks.blockCrop).func_149853_b(this.worldObj, rand, this.xCoord, this.yCoord, this.zCoord);
         }
         else if(this.isCrossCrop() && ConfigurationHandler.bonemealMutation) {
@@ -372,6 +373,7 @@ public class TileEntityCrop extends TileEntityAgricraft implements ICrop, IDebug
     public void readFromNBT(NBTTagCompound tag) {
         super.readFromNBT(tag);
         this.stats = PlantStats.readFromNBT(tag);
+        StatNerfer.nerfStats(stats);
         this.crossCrop=tag.getBoolean(Names.NBT.crossCrop);
         this.weed=tag.getBoolean(Names.NBT.weed);
         if(tag.hasKey(Names.NBT.seed) && !tag.hasKey(Names.NBT.meta)) {
