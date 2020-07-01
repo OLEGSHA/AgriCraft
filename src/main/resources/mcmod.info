@@ -2,7 +2,7 @@
 {
 "modid": "AgriCraft",
 "name": "AgriCraft",
-"description": "Agricultural farming extended",
+"description": "Agricultural farming extended - PIWCS edition",
 "version": "${version}",
 "mcversion": "${mcversion}",
 "url": "http://minecraft.curseforge.com/mc-mods/225635-agricraft",
@@ -10,7 +10,7 @@
 "authorList": [
 "InfinityRaider"
 ],
-"credits": "Code Help: Imasius, RlonRyan, API: HenryLoenwind, Textures: MechWarrior99, SkullyGamingMC, VapourDrive, SkeletonPunk",
+"credits": "Code Help: Imasius, RlonRyan, API: HenryLoenwind, Textures: MechWarrior99, SkullyGamingMC, VapourDrive, SkeletonPunk. Patched for PIWCS by OLEGSHA.",
 "logoFile": "assets/agricraft/textures/logo.png",
 "screenshots": [
 ],

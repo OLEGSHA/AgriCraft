@@ -1,5 +1,8 @@
 Changelog
 ---------
+1.5.1-PIWCS:
+-CHANGE: PIWCS adaptation: plant stats are nerfed
+
 1.5.1:
 -FIXED:  Tank crash
 -FIXED:  Crops, when not planted on crop sticks having inverted growth rate modifier
